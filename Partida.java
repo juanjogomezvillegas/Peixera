@@ -1,4 +1,4 @@
-package Zoombies;
+package Peixera;
 /**
  * @author Juan José Gómez Villegas
  * @author Jorge Luís Martínez Bermudez
@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class Partida extends GraphicsProgram {
     /**Create Variables private, final and static**/
     private static final ArrayList<Emoji> array_emojis = new ArrayList<>();
-    private static final String RUTA = "src/Zoombies/Imatges/";
+    private static final String RUTA = "src/Peixera/Imatges/";
     private static final GImage fons = new GImage(RUTA+"fons.jpg");
 
     /**

@@ -1,4 +1,4 @@
-package Zoombies;
+package Peixera;
 /**
  * @author Juan José Gómez Villegas
  * @author Jorge Luís Martínez Bermudez
