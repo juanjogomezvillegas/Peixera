@@ -65,7 +65,7 @@ public class Partida extends GraphicsProgram {
         /*
          * add to ArrayList "array_emojis" the images of the emojis, and write true if is zoombie and false if is not zoombie
          * */
-        array_emojis.add(new Emoji("zoombie.png", true));
+        array_emojis.add(new Emoji("coronavirus.png", true));
         array_emojis.add(new Emoji("emoji1.png", false));
         array_emojis.add(new Emoji("emoji2.png", false));
         array_emojis.add(new Emoji("emoji3.png", false));
@@ -190,14 +190,14 @@ public class Partida extends GraphicsProgram {
         double positionX = emoji.getImatge().getX();
         double positionY = emoji.getImatge().getY();
 
-        /*Check what "locX" be less that 0 or "locX" be greater that width to the window less 50
+        /*Check what "locX" be less that 0 or "locX" be greater that width to the window less 65
          * if is complies, will do the following*/
-        if (positionX < 0 || positionX > getWidth() - 50) {
+        if (positionX < 0 || positionX > getWidth() - 65) {
             emoji.setSpeedX(-emoji.getSpeedX());
         }
-        /*Check what "locY" be less that 0 or "locY" be greater that height to the window less 50
+        /*Check what "locY" be less that 0 or "locY" be greater that height to the window less 65
          * if is complies, will do the following*/
-        if (positionY < 0 || positionY > getHeight() - 50) {
+        if (positionY < 0 || positionY > getHeight() - 65) {
             emoji.setSpeedY(-emoji.getSpeedY());
         }
 
