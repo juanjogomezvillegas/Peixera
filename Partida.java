@@ -11,11 +11,13 @@ package Peixera;
  * We import the following classes:
  * @see acm.program
  * @see acm.graphics
+ * @see javax.swing
  * @see java.awt.Color
  * @see java.util.ArrayList
  * **/
 import acm.program.*;
 import acm.graphics.*;
+import javax.swing.*;
 import java.awt.Color;
 import java.util.ArrayList;
 
