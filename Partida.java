@@ -2,19 +2,20 @@ package Peixera;
 /**
  * @author Juan José Gómez Villegas
  * @author Jorge Luís Martínez Bermudez
+ * @author Kirill Lupenkov
+ * @author Edgar Peréz
+ * @author Jordi Risco
  * **/
 
 /**
  * We import the following classes:
- * @see acm.program.GraphicsProgram
- * @see acm.graphics.GImage
- * @see acm.graphics.GLabel
+ * @see acm.program
+ * @see acm.graphics
  * @see java.awt.Color
  * @see java.util.ArrayList
  * **/
-import acm.program.GraphicsProgram;
-import acm.graphics.GImage;
-import acm.graphics.GLabel;
+import acm.program.*;
+import acm.graphics.*;
 import java.awt.Color;
 import java.util.ArrayList;
 
@@ -50,8 +51,8 @@ public class Partida extends GraphicsProgram {
         fons.setSize(getWidth(), getHeight());
         add(fons);
 
-        /*Show message "Start the Zoombie Pandemy!", with the font "CourierNew-70", and color "LIGHT_GRAY", and located in the middle*/
-        GLabel start = new GLabel("Start the Zoombie Pandemy!");
+        /*Show message "Start the COVID-19 Pandemy!", with the font "CourierNew-70", and color "LIGHT_GRAY", and located in the middle*/
+        GLabel start = new GLabel("Start the COVID-19 Pandemy!");
         start.setFont("CourierNew-70");
         start.setColor(Color.LIGHT_GRAY);
         add(start, getWidth() / 2.0 - start.getWidth() / 2.0, getHeight() / 2.0);
@@ -60,7 +61,7 @@ public class Partida extends GraphicsProgram {
         remove(start);
 
         /*
-         * add to ArrayList "array_emojis" the images of the emojis, and write true if is zoombie and false if is not zoombie
+         * add to ArrayList "array_emojis" the images of the emojis, and write true if is covid and false if is not covid
          * */
         array_emojis.add(new Emoji("coronavirus.png", true));
         array_emojis.add(new Emoji("emoji1.png", false));
@@ -77,8 +78,8 @@ public class Partida extends GraphicsProgram {
          * add the images of the emojis in the window
          * */
         for (Emoji actual1 : array_emojis) {
-            double positionX = Aleatori.getNumeroAleatori(70, getWidth() - 71);
-            double positionY = Aleatori.getNumeroAleatori(70, getHeight() - 71);
+            double positionX = Aleatori.getNumeroAleatori(60, getWidth() - 75);
+            double positionY = Aleatori.getNumeroAleatori(60, getHeight() - 75);
             add(actual1.getImatge(), positionX ,positionY);
         }
     }
@@ -113,24 +114,20 @@ public class Partida extends GraphicsProgram {
                 setMoureEmoji(actual1);
             }
 
-            /*check if an emoji is next to zoombie
-             * if there is an emoji is next to an zoombie, the emoji convert in zoombie*/
+            /*check if an emoji is next to covid
+             * if there is an emoji is next to an covid, the emoji convert in covid*/
             for (Emoji actual1 : array_emojis) {
                 for (Emoji actual2 : array_emojis) {
-                    /*If emoji "actual1" is zoombie and emoji "actual2" is not zoombie*/
-                    if (actual1.isZoombie() && !actual2.isZoombie()) {
-                        /*Storage position X and Y, of the two images
-                         * and too storage the two images*/
+                    /*If emoji "actual1" is covid and emoji "actual2" is not covid*/
+                    if (actual1.isCovid() && !actual2.isCovid()) {
+                        /*Storage the two images of the emoji1 ("actual1") and the emoji2 ("actual2"),
+                         * run method "getImatge" of the class "Emoji"*/
                         GImage img1 = actual1.getImatge();
                         GImage img2 = actual2.getImatge();
-                        double x1 = img1.getX();
-                        double y1 = img1.getY();
-                        double x2 = img2.getX();
-                        double y2 = img2.getY();
 
-                        /*If the two images meet the following conditions*/
-                        if (y1 < y2 + 35 && y1 > y2 - 35 && x1 < x2 + 35  && x1 > x2 - 35) {
-                            actual2.setZoombie(true);/*emoji is convert to zoombie*/
+                        /*If the two images collision*/
+                        if (img1.getBounds().intersects(img2.getBounds())) {
+                            actual2.setCovid(true);/*emoji is convert to covid*/
                             ComptadorSans--;/*less 1 the variable "ComptadorSans"*/
                             ComptadorInfectats++;/*more 1 the variable "ComptadorInfectats"*/
                         }
@@ -138,17 +135,20 @@ public class Partida extends GraphicsProgram {
                 }
             }
 
-            /*Check if all emojis have converted in zoombie
-             * if all have convert in zoombie, the variable "sortir" is true*/
+            /*Check if all emojis have converted in covid
+             * if all have convert in covid, the variable "sortir" is true*/
             for (Emoji actual1 : array_emojis) {
-                if (!actual1.isZoombie()) {
+                /*If emoji current is not covid*/
+                if (!actual1.isCovid()) {
+                    /*"sortir" will be equals to "false" and break the loop "foreach"*/
                     sortir = false;
                     break;
-                } else {
+                } else {/*If not, does the following*/
                     /*Show a message "All Emoji's Infected"*/
                     remove(comptaSans);
                     comptaInfectats.setLabel("All Emoji's Infected");
                     add(comptaInfectats, getWidth() / 2.0 - comptaInfectats.getWidth() / 1.5, 50);
+                    /*"sortir" will be equals to "true"*/
                     sortir = true;
                 }
             }
@@ -161,7 +161,7 @@ public class Partida extends GraphicsProgram {
         /*And the next loop, makes all the emojis disappear*/
         for (Emoji actual2 : array_emojis) {
             actual2.getImatge().setVisible(false);
-            pause(350);
+            pause(50);
         }
 
         /*And show a message "Humanity has become extinct!", with the font "CourierNew-70", and color "LIGHT_GRAY", and located in the middle*/
@@ -172,27 +172,23 @@ public class Partida extends GraphicsProgram {
 
         /*establishes the pause time, in the value of the variable "1000"*/
         pause(1000);
-
-        waitForClick();/*wait until the user click on the window*/
-
-        System.exit(0);/*Close the window*/
     }
 
     /**
      * Create method setter "setAvancar"
      * @param emoji the emoji that needs to be moved
      * **/
-    private void setMoureEmoji(Emoji emoji) {
+    public void setMoureEmoji(Emoji emoji) {
         /*Storage in the variables "positionX" and "positionY", the position X and Y to the emoji to param*/
         double positionX = emoji.getImatge().getX();
         double positionY = emoji.getImatge().getY();
 
-        /*Check what "locX" be less that 0 or "locX" be greater that width to the window less 65
+        /*Check what "locX" be less that 0 or "locX" be greater that width to the window less 50
          * if is complies, will do the following*/
         if (positionX < 0 || positionX > getWidth() - 65) {
             emoji.setSpeedX(-emoji.getSpeedX());
         }
-        /*Check what "locY" be less that 0 or "locY" be greater that height to the window less 65
+        /*Check what "locY" be less that 0 or "locY" be greater that height to the window less 50
          * if is complies, will do the following*/
         if (positionY < 0 || positionY > getHeight() - 65) {
             emoji.setSpeedY(-emoji.getSpeedY());
