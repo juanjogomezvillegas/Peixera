@@ -11,15 +11,15 @@ package Peixera;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Create class "Aleatori"
+ * Create interface "Aleatori"
  * @version 1
  * **/
-public class Aleatori {
+public interface Aleatori {
     /**
      * Create method getter "getNumeroAleatori", of type static
      * @param min minimum value
      * @param max maximum value
      * @return random number between param "min" and param "max"
      * **/
-    public static int getNumeroAleatori(int min, int max) {return ThreadLocalRandom.current().nextInt(min, max);}
+    static int getNumeroAleatori(int min, int max) {return ThreadLocalRandom.current().nextInt(min, max);}
 }
