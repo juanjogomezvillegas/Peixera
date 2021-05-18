@@ -157,7 +157,7 @@ public class Partida extends GraphicsProgram {
         }
 
         /*Change wallpapper of the game*/
-        fons.setImage(RUTA+"fons-final.jpg");
+        fons.setImage(RUTA+"fons-final2.jpg");
         fons.setSize(getWidth(), getHeight());
 
         /*And the next loop, makes all the emojis disappear*/
