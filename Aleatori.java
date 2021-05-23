@@ -21,5 +21,5 @@ public class Aleatori {
      * @param max maximum value
      * @return random number between param "min" and param "max"
      * **/
-    static int getNumeroAleatori(int min, int max) {return ThreadLocalRandom.current().nextInt(min, max);}
+    public static int getNumeroAleatori(int min, int max) {return ThreadLocalRandom.current().nextInt(min, max);}
 }

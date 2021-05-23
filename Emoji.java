@@ -20,6 +20,10 @@ import acm.graphics.*;
 public class Emoji extends GraphicsProgram {
     /**Create Variables private, final and static**/
     private static final String RUTA = "src/Peixera/Imatges/";
+    /**Create array the string, with the name of the images, of type private, static and final**/
+    private static final String[] array_nom_imatges = new String[]{
+            "emoji1.png","emoji2.png","emoji3.png","emoji4.png","emoji5.png","emoji6.png","emoji7.png","emoji8.png","emoji9.png"
+    };
     /**Create Variables private**/
     private GImage IMAGE_EMOJI;
     private boolean covid;
@@ -33,8 +37,14 @@ public class Emoji extends GraphicsProgram {
      * @param covid variable boolean, what indicate if emoji is a covid or no
      * **/
     public Emoji(String rutaEmoji, boolean covid) {
-        /*we create one instance of the image the param "rutaEmoji"*/
-        IMAGE_EMOJI = new GImage(RUTA+rutaEmoji);
+        /*If emoji is not covid*/
+        if (!covid) {
+            /*we create one instance of the image the param "rutaEmoji"*/
+            IMAGE_EMOJI = new GImage(RUTA+rutaEmoji);
+        } else {/*If is covid*/
+            /*we create one instance of the image "coronavirus.png"*/
+            IMAGE_EMOJI = new GImage(RUTA+"coronavirus.png");
+        }
         /*assign the variable "zoombie" the value of the param "zoombie"*/
         this.covid = covid;
 
@@ -71,6 +81,8 @@ public class Emoji extends GraphicsProgram {
     public void setCovid(boolean covid) {
         if (covid) {
             IMAGE_EMOJI.setImage(RUTA+"coronavirus.png");
+        } else {
+            IMAGE_EMOJI.setImage(RUTA+array_nom_imatges[Aleatori.getNumeroAleatori(0, array_nom_imatges.length-1)]);
         }
         this.covid = covid;
     }
