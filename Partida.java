@@ -52,6 +52,9 @@ public class Partida extends GraphicsProgram {
         setSize(1500, 1000);
         setBackground(Color.DARK_GRAY);
 
+        /*
+        * Add to wallpapper of the game
+        * */
         fons.setSize(getWidth(), getHeight());
         add(fons, 0, 0);
 
@@ -61,7 +64,7 @@ public class Partida extends GraphicsProgram {
         add(start, getWidth() / 2.0 - start.getWidth() / 2.0, getHeight() / 2.0);
 
         waitForClick();/*wait until the user click on the window*/
-        remove(start);
+        remove(start);/*Remove label "start"*/
 
         /*
          * add to ArrayList "array_emojis" the images of the covid
@@ -191,6 +194,7 @@ public class Partida extends GraphicsProgram {
             }
         }
 
+        /*Run method setter "setEsborrarObjectes"*/
         setEsborrarObjectes(array_emojis, array_vacunes);
 
         /*If counter of infect is equals to size the array "array_emojis"*/
@@ -223,8 +227,10 @@ public class Partida extends GraphicsProgram {
             add(end, getWidth() / 2.0 - end.getWidth() / 2.0, getHeight() / 2.0);
         }
 
-        /*establishes the pause time, in the value of the variable "1000"*/
-        pause(1000);
+        pause(1000);/*establishes the pause time, in the value of the variable "1000"*/
+
+        waitForClick();/*wait until the user click on the window*/
+        System.exit(0);/*Close the window of the game*/
     }
 
     /**
@@ -259,7 +265,7 @@ public class Partida extends GraphicsProgram {
      * @param vacuna the vacuna that needs to be moved
      * **/
     private void setMoureVacunes(Vacuna vacuna) {
-        /*Storage in the variables "positionX" and "positionY", the position X and Y to the vacuna to param*/
+        /*Storage in the variables "positionX" and "positionY", the position X and Y to the vaccine to param*/
         double positionX = vacuna.getImatge().getX();
         double positionY = vacuna.getImatge().getY();
 
@@ -274,7 +280,7 @@ public class Partida extends GraphicsProgram {
             vacuna.setSpeedY(-vacuna.getSpeedY());
         }
 
-        /*Move the vacuna*/
+        /*Move the vaccine*/
         vacuna.getImatge().move(vacuna.getSpeedX(), vacuna.getSpeedY());
 
         /*establishes the pause time, in the value of the variable "3"*/
@@ -293,7 +299,7 @@ public class Partida extends GraphicsProgram {
             pause(50);
         }
 
-        /*Makes all the vacunes disappear*/
+        /*Makes all the vaccine disappear*/
         for (Vacuna actual1 : array_vacunes) {
             actual1.getImatge().setVisible(false);
             pause(50);
