@@ -53,8 +53,8 @@ public class Partida extends GraphicsProgram {
         setBackground(Color.DARK_GRAY);
 
         /*
-        * Add to wallpapper of the game
-        * */
+         * Add to wallpapper of the game
+         * */
         fons.setSize(getWidth(), getHeight());
         add(fons, 0, 0);
 
@@ -72,8 +72,8 @@ public class Partida extends GraphicsProgram {
         array_emojis.add(new Emoji("", true));
 
         /*
-        * Ask the user the number of emojis
-        * */
+         * Ask the user the number of emojis
+         * */
         String numEmojis = JOptionPane.showInputDialog("Write the population of emojis: ");
 
         /*
@@ -82,9 +82,9 @@ public class Partida extends GraphicsProgram {
         String numVacunes = JOptionPane.showInputDialog("Write the number of Vaccines: ");
 
         /*
-        * add to ArrayList "array_emojis" the images of the emojis
-        * and add the images of the emojis in the window
-        * */
+         * add to ArrayList "array_emojis" the images of the emojis
+         * and add the images of the emojis in the window
+         * */
         for (int i = 0; i < Integer.parseInt(numEmojis); i++) {
             array_emojis.add(new Emoji(array_nom_imatges[Aleatori.getNumeroAleatori(0, array_nom_imatges.length-1)], false));
 
@@ -187,7 +187,7 @@ public class Partida extends GraphicsProgram {
             }
 
             /*If counter of infect is equals to size the array "array_emojis"
-            * or counter of not infect is equals to size the array "array_emojis"*/
+             * or counter of not infect is equals to size the array "array_emojis"*/
             if (ComptadorInfectats == array_emojis.size() || ComptadorSans == array_emojis.size()) {
                 /*"sortir" will be equals to "true"*/
                 sortir = true;
