@@ -1,39 +1,34 @@
 package Peixera;
-/**
- * @author Juan José Gómez Villegas
- * @author Jorge Luís Martínez Bermudez
- * **/
-
-/**
+/*
  * We import the following classes:
- * @see acm.program
- * @see acm.graphics
+ * @see acm.program.GraphicsProgram
+ * @see acm.graphics.GImage
+ * @see acm.graphics.GLabel
  * @see javax.swing.JOptionPane
  * @see java.awt.Color
  * @see java.util.ArrayList
- * **/
-import acm.program.*;
-import acm.graphics.*;
+ * */
+import acm.program.GraphicsProgram;
+import acm.graphics.GImage;
+import acm.graphics.GLabel;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.util.ArrayList;
 
 /**
+ * @author Juan José Gómez Villegas
+ * @author Jorge Luís Martínez Bermudez
+ *
  * Create class "Partida", inherited from the class "GraphicsProgram"
  * @see GraphicsProgram
  * @version 1
  * **/
 public class Partida extends GraphicsProgram {
-    /**Create Variables private, final and static**/
+    /*Create Variables private, final and static*/
     private static final ArrayList<Emoji> array_emojis = new ArrayList<>();
     private static final ArrayList<Vacuna> array_vacunes = new ArrayList<>();
-    private static final String RUTA = "src/Peixera/Imatges/";
-    /**Create Variables private and static**/
-    private static GImage fons = new GImage(RUTA+"fons.jpg");
-    /**Create array the string, with the name of the images, of type private, static and final**/
-    private static final String[] array_nom_imatges = new String[]{
-            "emoji1.png","emoji2.png","emoji3.png","emoji4.png","emoji5.png","emoji6.png","emoji7.png","emoji8.png","emoji9.png"
-    };
+    /*Create Variables private and static*/
+    private static GImage fons = new GImage(Imatges.getRUTA()+"fons.jpg");
 
     /**
      * Create method setter and static main
@@ -86,7 +81,7 @@ public class Partida extends GraphicsProgram {
          * and add the images of the emojis in the window
          * */
         for (int i = 0; i < Integer.parseInt(numEmojis); i++) {
-            array_emojis.add(new Emoji(array_nom_imatges[Aleatori.getNumeroAleatori(0, array_nom_imatges.length-1)], false));
+            array_emojis.add(new Emoji(Imatges.getStringImageEmoji(), false));
 
             double positionX = Aleatori.getNumeroAleatori(60, getWidth() - 75);
             double positionY = Aleatori.getNumeroAleatori(60, getHeight() - 75);
@@ -205,7 +200,7 @@ public class Partida extends GraphicsProgram {
             comptaInfectats.setLocation(getWidth() / 2.0 - comptaInfectats.getWidth() / 2.0, 50);
 
             /*Change wallpapper of the game*/
-            fons.setImage(RUTA+"fons-final2.jpg");
+            fons.setImage(Imatges.getRUTA()+"fons-final2.jpg");
             fons.setSize(getWidth(), getHeight());
 
             /*Show a message "Humanity has become extinct!"*/
@@ -218,7 +213,7 @@ public class Partida extends GraphicsProgram {
             remove(comptaInfectats);
 
             /*Change wallpapper of the game*/
-            fons.setImage(RUTA+"fons-final1.jpg");
+            fons.setImage(Imatges.getRUTA()+"fons-final1.jpg");
             fons.setSize(getWidth(), getHeight());
 
             /*Show a message "Humanity has become extinct!"*/

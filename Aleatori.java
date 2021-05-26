@@ -1,17 +1,15 @@
 package Peixera;
-/**
- * @author Juan José Gómez Villegas
- * @author Jorge Luís Martínez Bermudez
- * **/
-
-/**
+/*
  * We import the following classes:
  * @see java.util.concurrent.ThreadLocalRandom
- * **/
+ * */
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Create class abstract "Aleatori"
+ * @author Juan José Gómez Villegas
+ * @author Jorge Luís Martínez Bermudez
+ *
+ * Create abstract class "Aleatori"
  * @version 1
  * **/
 public abstract class Aleatori {

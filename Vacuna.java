@@ -1,28 +1,20 @@
 package Peixera;
+/*
+ * We import the following classes:
+ * @see acm.graphics.GImage
+ * */
+import acm.graphics.GImage;
+
 /**
  * @author Juan José Gómez Villegas
  * @author Jorge Luís Martínez Bermudez
- * **/
-
-/**
- * We import the following classes:
- * @see acm.program
- * @see acm.graphics
- * **/
-import acm.program.*;
-import acm.graphics.*;
-
-/**
- * Create class "Vacuna", inherited from the class "GraphicsProgram"
- * @see GraphicsProgram
+ *
+ * Create class "Vacuna"
  * @version 1
  * **/
-public class Vacuna extends GraphicsProgram {
-    /**Create Variables private, final and static**/
-    private static final String RUTA = "src/Peixera/Imatges/";
-    /**Create Variables private**/
+public class Vacuna {
+    /*Create Variables private*/
     private GImage IMAGE_VACUNA;
-    private int numRandom;
     private double speedX;
     private double speedY;
 
@@ -30,10 +22,10 @@ public class Vacuna extends GraphicsProgram {
      * Create method constructor the class "Vacuna"
      * **/
     public Vacuna() {
-        IMAGE_VACUNA = new GImage(RUTA+"vacuna.png");
+        IMAGE_VACUNA = Imatges.getGImageVacuna();
 
         /*Generate number random between 0 and 5*/
-        numRandom = Aleatori.getNumeroAleatori(0, 5);
+        int numRandom = Aleatori.getNumeroAleatori(0, 5);
         if (numRandom == 0) {/*If "numRandom" equals 0*/
             speedX = 4;
             speedY = 2;
