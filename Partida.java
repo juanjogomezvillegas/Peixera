@@ -53,8 +53,10 @@ public class Partida extends GraphicsProgram {
         fons.setSize(getWidth(), getHeight());
         add(fons, 0, 0);
 
+        String nomPandemia = JOptionPane.showInputDialog("Write the name of pandemy: ");
+
         /*Show message "Start the COVID-19 Pandemy!"*/
-        GLabel start = new GLabel("Start the COVID-19 Pandemy!");
+        GLabel start = new GLabel("Start the " + nomPandemia + " Pandemy!");
         Partida.setStyleLabel(start, "70");
         add(start, getWidth() / 2.0 - start.getWidth() / 2.0, getHeight() / 2.0);
 
