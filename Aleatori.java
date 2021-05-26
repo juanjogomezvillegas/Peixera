@@ -11,10 +11,10 @@ package Peixera;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Create class "Aleatori"
+ * Create class abstract "Aleatori"
  * @version 1
  * **/
-public class Aleatori {
+public abstract class Aleatori {
     /**
      * Create method getter "getNumeroAleatori", of type static
      * @param min minimum value
