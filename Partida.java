@@ -288,17 +288,20 @@ public class Partida extends GraphicsProgram {
     /**
      * Create method setter "setEsborrarObjectes" of type private
      * @param array_emojis array of emojis
+     * @param array_vacunes array of vaccines
      * **/
     private void setEsborrarObjectes(ArrayList<Emoji> array_emojis, ArrayList<Vacuna> array_vacunes) {
         /*Makes all the emojis disappear*/
         for (Emoji actual1 : array_emojis) {
             actual1.getImatge().setVisible(false);
+
             pause(50);
         }
 
         /*Makes all the vaccine disappear*/
         for (Vacuna actual1 : array_vacunes) {
             actual1.getImatge().setVisible(false);
+
             pause(50);
         }
     }
