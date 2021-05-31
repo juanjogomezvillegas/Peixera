@@ -132,56 +132,14 @@ public class Partida extends GraphicsProgram {
                 setMoureEmoji(actual1);
             }
 
-            /*All vacunes advanced*/
+            /*All vaccines advanced*/
             for (Vacuna actual1 : array_vacunes) {
                 setMoureVacunes(actual1);
             }
 
-            /*check if an emoji is next to covid
-             * if there is an emoji is next to an covid, the emoji convert in covid*/
-            for (Emoji actual1 : array_emojis) {
-                for (Emoji actual2 : array_emojis) {
-                    /*If emoji "actual1" is covid and emoji "actual2" is not covid*/
-                    if (actual1.isCovid() && !actual2.isCovid()) {
-                        /*Storage the two images of the emoji1 ("actual1") and the emoji2 ("actual2"),
-                         * run method "getImatge" of the class "Emoji"*/
-                        GImage img1 = actual1.getImatge();
-                        GImage img2 = actual2.getImatge();
+            setContagia(ComptadorSans, ComptadorInfectats);
 
-                        /*If the two images collision*/
-                        if (img1.getBounds().intersects(img2.getBounds())) {
-                            actual2.setCovid(true);/*emoji is convert to covid*/
-                            actual1.setSpeedX(-actual1.getSpeedX());
-                            actual2.setSpeedX(-actual2.getSpeedX());
-                            ComptadorSans--;/*less 1 the variable "ComptadorSans"*/
-                            ComptadorInfectats++;/*more 1 the variable "ComptadorInfectats"*/
-                        }
-                    }
-                }
-            }
-
-            /*check if an vaccine is next to covid
-             * if there is an vaccine is next to an covid, the covid convert in emoji*/
-            for (Emoji actual1 : array_emojis) {
-                for (Vacuna actual2 : array_vacunes) {
-                    /*If emoji "actual1" is covid*/
-                    if (actual1.isCovid()) {
-                        /*Storage the two images of the emoji ("actual1") and the vaccine ("actual2"),
-                         * run method "getImatge" of the class "Emoji" and "Vacuna"*/
-                        GImage img1 = actual1.getImatge();
-                        GImage img2 = actual2.getImatge();
-
-                        /*If the two images collision*/
-                        if (img1.getBounds().intersects(img2.getBounds())) {
-                            actual1.setCovid(false);/*covid is convert to emoji*/
-                            actual1.setSpeedX(-actual1.getSpeedX());
-                            actual2.setSpeedX(-actual2.getSpeedX());
-                            ComptadorSans++;/*more 1 the variable "ComptadorSans"*/
-                            ComptadorInfectats--;/*less 1 the variable "ComptadorInfectats"*/
-                        }
-                    }
-                }
-            }
+            setimmunitza(ComptadorSans, ComptadorInfectats);
 
             /*If counter of infect is equals to size the array "array_emojis"
              * or counter of not infect is equals to size the array "array_emojis"*/
@@ -288,18 +246,68 @@ public class Partida extends GraphicsProgram {
     /**
      * Create method setter "setEsborrarObjectes" of type private
      * @param array_emojis array of emojis
+     * @param array_vacunes array of vaccines
      * **/
     private void setEsborrarObjectes(ArrayList<Emoji> array_emojis, ArrayList<Vacuna> array_vacunes) {
-        /*Makes all the emojis disappear*/
+        /*Makes all the objects disappear*/
         for (Emoji actual1 : array_emojis) {
-            actual1.getImatge().setVisible(false);
-            pause(50);
-        }
+            for (Vacuna actual2 : array_vacunes) {
+                actual1.getImatge().setVisible(false);
 
-        /*Makes all the vaccine disappear*/
-        for (Vacuna actual1 : array_vacunes) {
-            actual1.getImatge().setVisible(false);
-            pause(50);
+                actual2.getImatge().setVisible(false);
+
+                pause(50);
+            }
+        }
+    }
+
+    private void setContagia(int ComptadorSans, int ComptadorInfectats) {
+        /*check if an emoji is next to covid
+         * if there is an emoji is next to an covid, the emoji convert in covid*/
+        for (Emoji actual1 : array_emojis) {
+            for (Emoji actual2 : array_emojis) {
+                /*If emoji "actual1" is covid and emoji "actual2" is not covid*/
+                if (actual1.isCovid() && !actual2.isCovid()) {
+                    /*Storage the two images of the emoji1 ("actual1") and the emoji2 ("actual2"),
+                     * run method "getImatge" of the class "Emoji"*/
+                    GImage img1 = actual1.getImatge();
+                    GImage img2 = actual2.getImatge();
+
+                    /*If the two images collision*/
+                    if (img1.getBounds().intersects(img2.getBounds())) {
+                        actual2.setCovid(true);/*emoji is convert to covid*/
+                        actual1.setSpeedX(-actual1.getSpeedX());
+                        actual2.setSpeedX(-actual2.getSpeedX());
+                        ComptadorSans--;/*less 1 the variable "ComptadorSans"*/
+                        ComptadorInfectats++;/*more 1 the variable "ComptadorInfectats"*/
+                    }
+                }
+            }
+        }
+    }
+
+    private void setimmunitza(int ComptadorSans, int ComptadorInfectats) {
+        /*check if an vaccine is next to covid
+         * if there is an vaccine is next to an covid, the covid convert in emoji*/
+        for (Emoji actual1 : array_emojis) {
+            for (Vacuna actual2 : array_vacunes) {
+                /*If emoji "actual1" is covid*/
+                if (actual1.isCovid()) {
+                    /*Storage the two images of the emoji ("actual1") and the vaccine ("actual2"),
+                     * run method "getImatge" of the class "Emoji" and "Vacuna"*/
+                    GImage img1 = actual1.getImatge();
+                    GImage img2 = actual2.getImatge();
+
+                    /*If the two images collision*/
+                    if (img1.getBounds().intersects(img2.getBounds())) {
+                        actual1.setCovid(false);/*covid is convert to emoji*/
+                        actual1.setSpeedX(-actual1.getSpeedX());
+                        actual2.setSpeedX(-actual2.getSpeedX());
+                        ComptadorSans++;/*more 1 the variable "ComptadorSans"*/
+                        ComptadorInfectats--;/*less 1 the variable "ComptadorInfectats"*/
+                    }
+                }
+            }
         }
     }
 
