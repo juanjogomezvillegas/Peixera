@@ -6,18 +6,15 @@ package Peixera;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @author Juan José Gómez Villegas
- * @author Jorge Luís Martínez Bermudez
- *
- * Create abstract class "Aleatori"
+ * Create abstract class "Random"
  * @version 1
  * **/
-public abstract class Aleatori {
+public abstract class Random {
     /**
-     * Create method getter "getNumeroAleatori", of type static
+     * Create method getter "getNumberRandom", of type static
      * @param min minimum value
      * @param max maximum value
      * @return random number between param "min" and param "max"
      * **/
-    public static int getNumeroAleatori(int min, int max) {return ThreadLocalRandom.current().nextInt(min, max);}
+    public static int getNumberRandom(int min, int max) {return ThreadLocalRandom.current().nextInt(min, max);}
 }

@@ -6,15 +6,17 @@ package Peixera;
 import acm.graphics.GImage;
 
 /**
- * @author Juan José Gómez Villegas
- * @author Jorge Luís Martínez Bermudez
- *
  * Create class "Emoji"
  * @version 1
  * **/
 public class Emoji {
-    /*Create Variables private*/
-    private GImage IMAGE_EMOJI;
+    /*Create array the string, with the name of the images, of type private, static and final*/
+    private static final String[] array_nom_images = new String[]{
+            "emoji1.png","emoji2.png","emoji3.png","emoji4.png","emoji5.png","emoji6.png","emoji7.png","emoji8.png","emoji9.png"
+    };
+    /*Create Variables private, static or final*/
+    private static final String RUTA = "src/Peixera/Images/";
+    private final GImage IMAGE_EMOJI;
     private boolean covid;
     private double speedX;
     private double speedY;
@@ -28,16 +30,16 @@ public class Emoji {
         /*If emoji is not covid*/
         if (!covid) {
             /*we create one instance of the image the param "rutaEmoji"*/
-            IMAGE_EMOJI = new GImage(Imatges.getRUTA()+rutaEmoji);
+            IMAGE_EMOJI = new GImage(RUTA+rutaEmoji);
         } else {/*If is covid*/
             /*we create one instance of the image "coronavirus.png"*/
-            IMAGE_EMOJI = Imatges.getGImageCovid();
+            IMAGE_EMOJI = new GImage(RUTA+"coronavirus.png");
         }
-        /*assign the variable "zoombie" the value of the param "zoombie"*/
+        /*assign the variable "covid" the value of the param "covid"*/
         this.covid = covid;
 
         /*Generate number random between 0 and 5*/
-        int numRandom = Aleatori.getNumeroAleatori(0, 5);
+        int numRandom = Random.getNumberRandom(0, 5);
         if (numRandom == 0) {/*If "numRandom" equals 0*/
             speedX = 4;
             speedY = 2;
@@ -57,10 +59,10 @@ public class Emoji {
     }
 
     /**
-     * Create method getter "getImatge"
+     * Create method getter "getImage"
      * @return IMAGE_EMOJI
      * **/
-    public GImage getImatge() {return IMAGE_EMOJI;}
+    public GImage getImage() {return IMAGE_EMOJI;}
 
     /**
      * Create method setter "setCovid"
@@ -68,9 +70,9 @@ public class Emoji {
      * **/
     public void setCovid(boolean covid) {
         if (covid) {
-            IMAGE_EMOJI.setImage(Imatges.getImageCovid());
+            IMAGE_EMOJI.setImage(RUTA+"coronavirus.png");
         } else {
-            IMAGE_EMOJI.setImage(Imatges.getImageEmoji());
+            IMAGE_EMOJI.setImage(RUTA+array_nom_images[Random.getNumberRandom(0,array_nom_images.length-1)]);
         }
         this.covid = covid;
     }
